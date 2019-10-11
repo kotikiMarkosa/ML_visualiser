@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block body %}
+
+ 
+<div class ="conteiner">
+	<div class="pl-5 py-4">
+		<div class="row">
+			<div class="col-sm-2 pl-1">
+			</div> 
+			<div class="col-sm-4 pl-1"> 
+		    	<p class="h3 shadow-sm p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Choose your problem</p>
+		    	<table class="table">
+		    		<tbody>
+				    	<form>
+					    	<tr>
+					       		<td><button formaction="/start/act/clustering/" type="submit" class="btn btn-lg btn-outline-primary" >Clustering</button></td>
+					       		
+					        </tr>
+
+					        <tr>
+					       		<td><button formaction="/start/act/classification/"  type="submit" class="btn btn-lg btn-outline-primary"  >Binary classification</button></td>
+					       		
+					        </tr>
+
+					       	<tr>
+					       		<td><button formaction="/start/act/regression/"  type="submit" class="btn btn-lg btn-outline-primary" >Regression</button></td>
+					       		
+					       	</tr>
+
+					       	<tr>
+					       		<td>
+					       			<!-- <form action="" method="post">
+							       		<div class="custom-control custom-radio">
+							       		  <input  type="radio" id="customRadio1" name="act" class="custom-control-input" value = 'Clustering'>
+							       		  <label class="custom-control-label" for="customRadio1"> Clustering </label>
+							       		</div>
+
+							       		<div class="custom-control custom-radio">
+							       		  <input type="radio" id="customRadio2" name="act" class="custom-control-input" value="Classification">
+							       		  <label class="custom-control-label" for="customRadio2">Classification</label>
+							       		</div>
+							       		<div class="custom-control custom-radio">
+							       		  <input type="radio" id="customRadio3" name="act" class="custom-control-input" value="Classification">
+							       		  <label class="custom-control-label" for="customRadio3">Regression</label>
+							       		</div>
+							       	</form> -->
+
+					       		</td>
+					       	</tr>
+
+					       	
+					    </form>
+				    </tbody>
+				</table>
+
+			</div>
+			<div class="col-sm-4 pl-1"> 
+		    	<p class="h3 p-1 mb-2" style="background-color: #f0f8ff;" >Choose your data and target</p>
+		    	<table class="table">
+		    		<tbody>
+				    	<form>
+					    	<tr>
+					       		<td><button formaction="/start/data/data_for_clustering"  type="submit" class="btn btn-lg btn-outline-primary">Data for Clustering</button></td>
+					       		
+					        </tr>
+
+					        <tr>
+					       		<td><button formaction="/start/data/data_for_classification" type="submit" class="btn btn-lg btn-outline-primary">Data for Classification</button></td>
+					       		
+					        </tr>
+
+					       	<tr>
+					       		<td><button formaction="/start/data/data_for_regression" type="submit" class="btn btn-lg btn-outline-primary">Data for Regression</button></td>
+					       		
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/start/data/upload_data"  type="submit" class="btn btn-lg btn-outline-primary">Upload data</button></td>
+					       		
+					       	</tr>
+
+					       	
+					    </form>
+				    </tbody>
+				</table>
+
+			</div>
+			<div class="col-sm-2 pl-1">
+			</div> 
+		</div>
+		<div class="row">
+			<div class="col-sm-2 pl-1">
+			</div> 
+			<div class="col-sm-8 pl-1">
+				<form>
+					<button formaction="/start/submit/" type="submit" class="btn btn-block btn-primary">Apply</button>
+				</form>
+			</div> 
+		</div>
+		<div class="row">
+			<div class="col-sm-2 pl-1">
+			</div> 
+			{% if error %}
+			   <h3 class=error><strong>Error:</strong> {{ error }}</h3>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

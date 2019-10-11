@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block body %}
+
+ 
+<div class ="conteiner">
+    <div class="pl-5 py-4">
+        <div class="row">
+            <div class="col-sm-3 pl-1"> 
+                <p class="h3 shadow-sm p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Choose method</p>
+                <form action="/classification/apply/"  method=post>
+                    <div class="form-check" >
+                      <input class="form-check-input" name="clf" type="checkbox" value="Nearest Neighbors" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Nearest Neighbors
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="Linear SVM" id="defaultCheck2">
+                      <label class="form-check-label" for="defaultCheck2">
+                        Linear SVM
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="RBF SVM" id="defaultCheck3">
+                      <label class="form-check-label" for="defaultCheck3">
+                        RBF SVM
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="Decision Tree" id="defaultCheck4">
+                      <label class="form-check-label" for="defaultCheck4">
+                        Decision Tree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="Random Forest" id="defaultCheck5">
+                      <label class="form-check-label" for="defaultCheck5">
+                        Random Forest
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="Naive Bayes" id="defaultCheck6">
+                      <label class="form-check-label" for="defaultCheck6">
+                        Naive Bayes
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="clf" type="checkbox" value="all" id="defaultCheck7">
+                      <label class="form-check-label" for="defaultCheck7">
+                        All methods
+                      </label>
+                    </div>
+                 
+                     <button type="submit" class="btn btn-block btn-primary pl-1">Apply</button>
+                </form>  
+
+            </div>
+            <div class="col-sm-8 pl-1">
+                <p class="h3 shadow-sm p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Results</p>
+                <!-- <figure class="figure">
+                  <p><img src="../images/clf_pic.png" class="figure-img img-fluid rounded"></p>
+                  <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                </figure> -->
+                    {% if filename %}
+                        <figure class="figure">
+                          <p><img src="{{ url_for('static', filename=filename) }}" class="figure-img img-fluid rounded"></p>
+                          <!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> -->
+                        </figure>
+                    {% endif %}
+
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

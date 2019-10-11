@@ -1,0 +1,456 @@
+<!-- <!doctype html>
+<title>Hello from Flask</title> -->
+
+{% extends "layout.html" %}
+{% block body %}
+
+<div class ="conteiner">
+	<nav class="navbar  navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+	  	<a class="navbar-brand" href="#">1IN100</a>
+	  	
+	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	   
+	    </div>
+	    <form>
+	    	<!--<input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="15" data-slider-max="100" data-slider-step="1" data-slider-value="{{request.form.volume }}"/>-->
+		</form>
+		<form>
+			
+			<div class="btn-group btn-group-md mb-2 ml-2 my-2"  >
+					<button formaction="/volume/d/" type="submit" class="btn btn-outline-secondary">-</button>
+					<button type="submit" class="btn  btn-outline-secondary "> Громкость {{ volume }} </button></td>
+					<button formaction="/volume/i/" type="submit" class="btn btn-outline-secondary">+</button>
+			</div>
+		</form>
+		
+			
+		<form class="btn-group mb-2 ml-2 my-2" >
+			<button formaction="/pause/" type="submit" class="btn btn-md btn-outline-secondary">Пауза</button>
+			<button formaction="/hello/pause/+/" type="submit" class="btn btn-md btn-outline-secondary">+</button>
+		</form>
+		
+		
+		<form>
+			<button formaction="/hello/stop_voice/" type="submit" class="btn  mb-2 ml-2 my-2 btn-md btn-outline-secondary">Остановить звук</button>
+		</form>
+		<form>
+			<button formaction="/hello/stop_motor_functions/" type="submit" class="btn mb-2 my-2 ml-2 btn-md btn-outline-secondary">Остановить движения</button>
+		</form>
+		<form>
+			<button formaction="/hello/stop/" type="submit" class="btn  mb-2 my-2 ml-2 rounded btn-md btn-outline-secondary">Остановить все</button>
+		</form>
+		<form>
+			<button formaction="/hello/hait/" type="submit" class="btn mb-2 my-2 ml-2 btn-md btn-outline-secondary">Выключение</button>
+		</form>
+	    <form class="form-inline mr-auto my-2 my-lg-0" action="/login/" >
+	        <button class="btn btn-outline-primary my-2 ml-2 my-sm-0" type="submit">Сменить профиль</button>
+	    </form>
+	  
+	</nav>
+
+
+	<div class="pl-5 py-4">
+	  <div class="row">
+		   
+			<div class="col-lg-2.5 pl-1"> 
+		    	<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Цвет глаз</p>
+		    	<table class="table">
+		    		<tbody>
+				    	<form>
+					    	<tr>
+					       		<td><button formaction="/hello/green/" name="green" type="submit" class="btn btn-sm btn-outline-secondary">Зеленый</button></td>
+					       		<td><button formaction="/hello/green/+/" name="green+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					        </tr>
+
+					        <tr>
+					       		<td><button formaction="/hello/blue/" name="blue" type="submit" class="btn btn-sm btn-outline-secondary">Синий</button></td>
+					       		<td><button formaction="/hello/blue/+/" name="blue+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	
+					        </tr>
+
+					       	<tr>
+					       		<td><button formaction="/hello/red/" name="red" type="submit" class="btn btn-sm btn-outline-secondary">Красный</button></td>
+					       		<td><button formaction="/hello/red/+/" name="red+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+
+					       	
+					    </form>
+				    </tbody>
+				</table>
+
+				<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Говорение</p>
+				<div>
+					<form action="/my_text/" method=post>
+				      	<dl>
+				      		<dt class="text-secondary">Введите текст:
+				      		<dd><input type=text name=my_text value="{{request.form.my_text }}">
+				      	</dl>
+			      		<p><input type=submit class="btn btn-outline-secondary btn-sm" value=Произнести>
+						<!--<div class="btn-group">
+							<button type="submit" class="btn btn-sm btn-outline-secondary">Произнести</button>
+							<button formaction="/hello/hands_or/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+						</div>-->
+
+			    	</form>
+			    	<form>
+			    		<button formactiom="/clear/" type="submit" class="btn btn-sm btn-outline-secondary">Очистить</button>
+			    	</form>
+		    	</div>
+		    	<!--<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Громкость</p>
+				<form action="/set_speaker_volume/" method=post>
+			      	<dl>
+			      		<dt class="text-secondary">Уровень громкости:
+			      		<dd><input type=text name=volume value="{{request.form.volume }}">
+			      	</dl>
+		      		<p><input type=submit class="btn btn-outline-secondary btn-sm" value=Установить>
+		    	</form>-->
+
+		    	<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Песни</p>
+		    	    	<table class="table">
+		    	    		<tbody>
+		    			    	<form>
+		    				    	<tr>
+		    				       		<td><button formaction="/hello/play_pooh/"  type="submit" class="btn btn-sm btn-outline-secondary">Винни</button></td>
+		    				       		<td><button formaction="/hello/play_pooh/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+		    				        </tr>
+
+		    				        <tr>
+		    				       		<td><button formaction="/hello/play_gena/"  type="submit" class="btn btn-sm btn-outline-secondary">Гена</button></td>
+		    				       		<td><button formaction="/hello/play_gena/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+		    				        </tr>
+		    				         <tr>
+		    				        		<td><button formaction="/hello/play_bear/"  type="submit" class="btn btn-sm btn-outline-secondary">Умка</button></td>
+		    				        		<td><button formaction="/hello/play_bear/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+		    				         </tr>
+		    				          <tr>
+		    				         		<td><button formaction="/hello/play_spyat/"  type="submit" class="btn btn-sm btn-outline-secondary">Колыбельная</button></td>
+		    				         		<td><button formaction="/hello/play_spyat/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+		    				          </tr>
+		    				          <tr>
+		    				         		<td><button formaction="/hello/play_matroskin/"  type="submit" class="btn btn-sm btn-outline-secondary">Матроскин</button></td>
+		    				         		<td><button formaction="/hello/play_matroskin/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+		    				          </tr>
+
+		    				    </form>
+		    			    </tbody>
+		    			</table>
+
+
+		    </div>
+
+
+
+
+			<div class="col-lg-2.5 pl-1"> 
+		    	<p  class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Движения</p>
+		    	<table class="table">
+		    		<tbody>
+				    	<form>
+				    		<tr>
+					       		<td><button formaction="/hello/rest/" name="rest" type="submit" class="btn btn-sm btn-info">Покой</button></td>
+					       		<td><button formaction="/hello/rest/+/" name="rest+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					    	<tr>
+					       		<td><button formaction="/hello/sit/" name="sit" type="submit" class="btn btn-sm btn-info">Сесть</button></td>
+					       		<td><button formaction="/hello/sit/+/" name="sit+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					        </tr>
+
+					        <tr>
+					       		<td><button formaction="/hello/stand/" name="stand" type="submit" class="btn btn-sm btn-info">Встать</button></td>
+					       		<td><button formaction="/hello/stand/+/" name="stand+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	
+					        </tr>
+
+					       	
+					       	<tr>
+					       		<td><button formaction="/hello/dance/"  type="submit" class="btn btn-sm btn-outline-secondary">Странный танец</button></td>
+					       		<td>
+					       		<button formaction="/hello/dance/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/bend_right/"  type="submit" class="btn btn-sm btn-outline-secondary">Наклон вправо</button></td>
+					       		<td>
+					       		<button formaction="/hello/bend_right/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/bend_left/"  type="submit" class="btn btn-sm btn-outline-secondary">Наклон влево</button></td>
+					       		<td>
+					       		<button formaction="/hello/bend_left/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/head_yes/"  type="submit" class="btn btn-sm btn-outline-secondary">Движение "Да"</button></td>
+					       		<td>
+					       		<button formaction="/hello/head_yes/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/head_no/"  type="submit" class="btn btn-sm btn-outline-secondary">Движение "Нет"</button></td>
+					       		<td>
+					       		<button formaction="/hello/head_no/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					    </form>
+				    </tbody>
+				</table>
+		    </div>
+
+			<div class="col-lg-2.5 pl-1"> 
+
+		    	<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Фразы</p>
+		    	<table class="table">
+		    		<tbody>
+				    	<form>
+					    	<tr>
+					       		<td><button formaction="/hello/hi/" name="hi" type="submit" class="btn btn-sm btn-info">Привет</button></td>
+					       		<td><button formaction="/hello/hi/+/" name="hi+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					        </tr>
+
+					        <tr>
+					       		<td><button formaction="/hello/name/" name="name" type="submit" class="btn btn-sm btn-info">Меня зовут Нао</button></td>
+					       		<td><button formaction="/hello/name/+/" name="name+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	
+					        </tr>
+
+					        <tr>
+					        	<td><button formaction="/hello/good/" name="good" type="submit" class="btn btn-sm btn-info">Молодец</button></td>
+					        	<td><button formaction="/hello/good/+/" name="good+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					        </tr>
+
+					       	<tr>
+					       		<td><button formaction="/hello/bye/" name="bye" type="submit" class="btn btn-sm btn-info">Пока</button></td>
+					       		<td><button formaction="/hello/bye/+/" name="name+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+
+					       	<tr>
+					       		<td><button formaction="/hello/touch_right_hand/"  type="submit" class="btn btn-sm btn-outline-secondary">Потрогай мою правую руку</button></td>
+					       		<td>
+					       		<button formaction="/hello/touch_right_hand/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/touch_left_hand/"  type="submit" class="btn btn-sm btn-outline-secondary">Потрогай мою левую руку</button></td>
+					       		<td>
+					       		<button formaction="/hello/touch_left_hand/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/touch_right_foot/" type="submit" class="btn btn-sm btn-outline-secondary">Потрогай мою  правую ногу</button></td>
+					       		<td>
+					       		<button formaction="/hello/touch_right_foot/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+
+					       	<tr>
+					       		<td><button formaction="/hello/touch_left_foot/" type="submit" class="btn btn-sm btn-outline-secondary">Потрогай мою левую ногу</button></td>
+					       		<td>
+					       		<button formaction="/hello/touch_left_foot/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/touch_head/"  type="submit" class="btn btn-sm btn-outline-secondary">Потрогай мою голову</button></td>
+					       		<td>
+					       		<button formaction="/hello/touch_head/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+					       	<tr>
+					       		<td><button formaction="/hello/color/"  type="submit" class="btn btn-sm btn-outline-secondary">Какого цвета мои глаза?</button></td>
+					       		<td>
+					       		<button formaction="/hello/color/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+					       	</tr>
+
+					       
+					    </form>
+				    </tbody>
+				</table>
+		    </div>
+
+
+		    <div class="col-lg-2. pl-1">
+		    	
+    	    	<p  class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Руки</p>
+    	    	<table class="table">
+    	    		<tbody>
+    			    	<form>
+    						<tr>
+    							<td><button formaction="/hello/wipe_forehead/" name="wipe_forehead" type="submit" class="btn btn-sm btn-outline-secondary">Трогает голову</button></td>
+    							<td><button formaction="/hello/wipe_forehead/+/" name="wipe_forehead+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<tr>
+    							<td><button formaction="/hello/hello/" name="hello" type="submit" class="btn btn-sm btn-outline-secondary">Машет рукой</button></td>
+    							<td><button formaction="/hello/hello/+/" name="hello+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<!--<tr>
+    							<td><button formaction="/hello/hands_c/" name="close_hands" type="submit" class="btn btn-sm btn-outline-secondary">Сжать кулаки</button></td>
+    							<td><button formaction="/hello/hands_c/+/" name="close_hands+" type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<tr>
+    							<td><button formaction="/hello/hands_o/"  type="submit" class="btn btn-sm btn-outline-secondary">Разжать кулаки</button></td>
+    							<td><button formaction="/hello/hands_o/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<tr>
+    							<td><button formaction="/hello/hands_up/"  type="submit" class="btn btn-sm btn-outline-secondary">Руки вверх</button></td>
+    							<td><button formaction="/hello/hands_up/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<tr>
+    							<td><button formaction="/hello/hands_sides/"  type="submit" class="btn btn-sm btn-outline-secondary">Руки встороны</button></td>
+    							<td><button formaction="/hello/hands_sides/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>
+    						<tr>
+    							<td><button formaction="/hello/hands_front/"  type="submit" class="btn btn-sm btn-outline-secondary">Руки вперед</button></td>
+    							<td><button formaction="/hello/hands_front/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>-->
+    						<tr>
+
+    							<td><p class="text-secondary">Разжать кулак</p></td>
+    							<td>
+    								<div class="btn-group">
+    									<button formaction="/hello/hands_o/"  type="submit" class="btn btn-sm btn-outline-secondary">Обе</button>
+    									<button formaction="/hello/hands_o/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class="btn-group">
+    									<button formaction="/hello/hands_ol/"  type="submit" class="btn btn-sm btn-outline-secondary">Л</button>
+    									<button formaction="/hello/hands_ol/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class="btn-group">
+	    								<button formaction="/hello/hands_or/"  type="submit" class="btn btn-sm btn-outline-secondary">П</button>
+	    								<button formaction="/hello/hands_or/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							
+    						</tr>
+    						<!--<tr>
+    							<td><button formaction="/hello/hands_or/"  type="submit" class="btn btn-sm btn-outline-secondary">Разжать правую</button></td>
+    							<td><button formaction="/hello/hands_or/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button></td>
+    						</tr>-->
+    						<tr>
+    							<td><p class="text-secondary">Сжать кулак</p></td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_c/"  type="submit" class="btn btn-sm btn-outline-secondary">Обе</button>
+    									<button formaction="/hello/hands_c/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_cl/"  type="submit" class="btn btn-sm btn-outline-secondary">Л</button>
+    									<button formaction="/hello/hands_cl/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_cr/"  type="submit" class="btn btn-sm btn-outline-secondary">П</button>
+    									<button formaction="/hello/hands_cr/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    						</tr>
+    						
+    						
+    						<tr>
+    							<td><p class="text-secondary">Рука вверх</p></td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_up/"  type="submit" class="btn btn-sm btn-outline-secondary">Обе</button>
+    									<button formaction="/hello/hands_up/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/left_hand_up/"  type="submit" class="btn btn-sm btn-outline-secondary">Л</button>
+    									<button formaction="/hello/left_hand_up/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/right_hand_up/"  type="submit" class="btn btn-sm btn-outline-secondary">П</button>
+    									<button formaction="/hello/right_hand_up/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    										    							
+    						</tr>
+    						
+    						<tr>
+    							<td><p class="text-secondary">Рука всторону</p></td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_sides/"  type="submit" class="btn btn-sm btn-outline-secondary">Обе</button>
+    									<button formaction="/hello/hands_sides/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/left_hand_left/"  type="submit" class="btn btn-sm btn-outline-secondary">Л</button>
+    									<button formaction="/hello/left_hand_left/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/right_hand_right/"  type="submit" class="btn btn-sm btn-outline-secondary">П</button>
+    									<button formaction="/hello/right_hand_right/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td><p class="text-secondary">Рука вперед</button></td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/hands_front/"  type="submit" class="btn btn-sm btn-outline-secondary">Обе</button>
+    									<button formaction="/hello/hands_front/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/left_hand_front/"  type="submit" class="btn btn-sm btn-outline-secondary">Л</button>
+    									<button formaction="/hello/left_hand_front/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+
+    							<td>
+    								<div class='btn-group'>
+    									<button formaction="/hello/right_hand_front/"  type="submit" class="btn btn-sm btn-outline-secondary">П</button>
+    									<button formaction="/hello/right_hand_front/+/"  type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+    								</div>
+    							</td>
+    						</tr>
+
+    						
+    						
+    					</form>
+    				</tbody>
+    			</table>
+			</div>
+		    <div class="col-lg-2.5 pl-1">
+		    	<p class="h3 shadow p-1 mb-2 rounded" style="background-color: #f0f8ff;" >Очередь</p>
+		    	<form >
+		    		<button formaction="/new/queue/" name="new_queue" type="submit" class="btn btn-sm btn-secondary">Новая очередь</button>
+		    		<button formaction="/play/queue/" name="play_queue" type="submit" class="btn btn-sm btn-success">Старт</button>	
+		    		<button formaction="/hello/stop/" name="stop_queue" type="submit" class="btn btn-sm btn-danger">Стоп</button>
+	    	    </form>
+	    	    {% for action in name_list %}
+	    	    	<form >
+		    	    	<button type="button" class="btn my-1 btn-sm btn-outline-secondary "> {{ action }} </button></td>
+		    	    </form> 
+		    	{% endfor %}  
+		     
+		    </div>
+		    
+
+    		
+	  </div>
+	  <!--<div class="row">
+		   	<div class="col-lg-3">
+			    <form >
+			    	
+			       	<button formaction="/queue/" name="queue" type="submit" class="dropdown-item">Очередь</button>
+	    	    </form>
+	    	</div>
+	    	<div class="col-lg-3">
+			    <form >
+			    	
+			       	<button formaction="/free/free/" name="free" type="submit" class="dropdown-item">FREE</button>
+	    	    </form>
+	    	</div>
+	    	
+	  </div>-->
+
+	</div>
+</div>
+
+
+{% endblock %}
